@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import { Provider } from "react-redux";
 import { createStore, applyMiddleware } from "redux";
-import { Router, Route, Switch } from "react-router-dom";
+import { BrowserRouter as Router, Route } from "react-router-dom";
 
 import App from "./components/App";
 import history from './history';
@@ -12,6 +12,7 @@ const createStoreWithMiddleware = applyMiddleware()(createStore);
 
 class Hello extends React.Component {
   render() {
+    console.log('Entro');
     return <div>Hello!</div>;
   }
 }
@@ -23,7 +24,7 @@ class GoodBye extends React.Component {
 }
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>
-    <Router history={history}>
+    <Router>
       <div>
         Header
         <Route path="/hello" component={Hello} />
