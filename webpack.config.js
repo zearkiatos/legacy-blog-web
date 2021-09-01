@@ -5,7 +5,6 @@ module.exports = {
   ],
   output: {
     path: __dirname,
-    publicPath: '/',
     filename: 'bundle.js'
   },
   module: {
@@ -18,9 +17,10 @@ module.exports = {
     extensions: ['', '.js', '.jsx']
   },
   plugins: [
-    new Dotenv()
+    new Dotenv(),
   ],
   devServer: {
-    contentBase: './'
+    contentBase: './',
+    historyApiFallback: true
   }
 };
