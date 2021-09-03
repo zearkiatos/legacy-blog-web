@@ -33,3 +33,28 @@ jobs:
         OPEN_WEATHER_BASE_URL: ${{ secrets.REDUXBLOG_API_KEY }}
     - name: Build docker 🐳
       run: docker build . -t=legacy-blog-web:ghb-$GITHUB_RUN_NUMBER
+    - name: Build
+      run: npm run build
+    - name: Upload production-ready build files
+      uses: actions/upload-artifact@v2
+      with:
+        name: production-files
+        path: ./dist
+
+  deploy:
+    name: Deploy
+    needs: build
+    runs-on: ubuntu-latest
+    
+    steps:
+    - name: Download artifact
+      uses: actions/download-artifact@v2
+      with:
+        name: production-files
+        path: ./dist
+
+    - name: Deploy to gh-pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./dist

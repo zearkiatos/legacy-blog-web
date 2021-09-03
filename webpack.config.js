@@ -5,12 +5,16 @@ module.exports = {
   ],
   output: {
     path: __dirname,
-    filename: 'bundle.js'
+    publicPath: '/',
+    filename: 'dist/bundle.js'
   },
   module: {
     loaders: [{
       exclude: /node_modules/,
-      loader: 'babel'
+      loader: 'babel',
+      query: {
+        presets: ['react', 'es2015', 'stage-1']
+      }
     }]
   },
   resolve: {
@@ -20,7 +24,11 @@ module.exports = {
     new Dotenv(),
   ],
   devServer: {
+    historyApiFallback: true,
     contentBase: './',
-    historyApiFallback: true
+    watchOptions: {
+      aggregateTimeout: 300,
+      poll: 1000
+    }
   }
 };
