@@ -39,9 +39,9 @@ jobs:
       run: |
         mkdir -p dist
         chmod 755 dist
-        cp index.html /dist
-        cp bundle.js /dist
-        cp style/style.css /dist/style
+        mv index.html /dist
+        mv bundle.js /dist
+        mv style/style.css /dist/style
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
       with:
