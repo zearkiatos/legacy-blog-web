@@ -38,6 +38,7 @@ jobs:
     - name: Create production Folder
       run: |
         mkdir -p dist
+        chmod 755 dist
         cp index.html /dist
         cp bundle.js /dist
         cp style/style.css /dist/style
