@@ -1,4 +1,5 @@
 const Dotenv = require('dotenv-webpack');
+const CopyPlugin = require("copy-webpack-plugin");
 module.exports = {
   entry: [
     './src/index.js'
@@ -6,7 +7,7 @@ module.exports = {
   output: {
     path: __dirname,
     publicPath: '/',
-    filename: 'bundle.js'
+    filename: 'dist/bundle.js'
   },
   module: {
     loaders: [{

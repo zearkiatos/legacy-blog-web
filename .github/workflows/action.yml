@@ -34,14 +34,7 @@ jobs:
     - name: Build docker 🐳
       run: docker build . -t=legacy-blog-web:ghb-$GITHUB_RUN_NUMBER
     - name: Build
-      run: npm run build
-    - name: Create production Folder
-      run: |
-        mkdir -p dist
-        chmod 755 dist
-        mv index.html /dist
-        mv bundle.js /dist
-        mv style/style.css /dist/style
+      run:  make build
     - name: Upload production-ready build files
       uses: actions/upload-artifact@v2
       with:
