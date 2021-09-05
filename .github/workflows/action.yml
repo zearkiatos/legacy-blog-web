@@ -37,7 +37,7 @@ jobs:
       run: npm run build
     - name: Create production Folder
       run: |
-        mkdir dist
+        mkdir -p dist
         cp index.html /dist
         cp bundle.js /dist
         cp style/style.css /dist/style
