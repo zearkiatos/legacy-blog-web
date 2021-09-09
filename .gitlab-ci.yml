@@ -55,7 +55,23 @@ build-app:
     - echo "NODE_ENV=${NODE_ENV}" > .env
     - echo "REDUXBLOG_API_BASE_URL=${REDUXBLOG_API_BASE_URL}" >> .env
     - echo "REDUXBLOG_API_KEY=${REDUXBLOG_API_KEY}" >> .env
+    - make build
   artifacts:
     expire_in: 1hr
     paths:
-      - build
+      - dist
+
+pages:
+  stage: deploy
+  dependencies:
+    - build-app
+  script:
+    - echo "Deploy a review app 🚀"
+    - mv dist/* public
+  artifacts:
+    paths:
+      - public
+  environment:
+    name: staging
+  only:
+    - branches
