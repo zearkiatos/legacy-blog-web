@@ -3,6 +3,7 @@ stages:
   - install
   - docker
   - build
+  - deploy
   
 install-dependencies:
   stage: install
@@ -64,7 +65,7 @@ build-app:
 pages:
   stage: deploy
   dependencies:
-    - build-app
+    - build
   script:
     - echo "Deploy a review app 🚀"
     - mv dist/* public
