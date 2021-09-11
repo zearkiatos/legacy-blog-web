@@ -1,13 +1,15 @@
 import React, { Component } from "react";
+import { connect } from 'react-redux';
 import { Field, reduxForm } from "redux-form";
-import { Link } from 'react-router-dom'
+import { Link } from "react-router-dom";
+import { postActions } from "../../actions";
 
 class PostsNew extends Component {
   renderField(field) {
     const {
       meta: { touched, error },
       input,
-      label
+      label,
     } = field;
     const className = `form-group ${touched && error ? "has-danger" : ""}`;
     return (
@@ -18,8 +20,8 @@ class PostsNew extends Component {
       </div>
     );
   }
-  onSubmit(values) {
-    console.log(values);
+  onSubmit(value) {
+    this.props.createPost(value);
   }
   render() {
     const { handleSubmit } = this.props;
@@ -43,7 +45,9 @@ class PostsNew extends Component {
         <button type="submit" className="btn btn-primary">
           Submit
         </button>
-        <Link to="/" className="btn btn-danger ml-5">Cancel</Link>
+        <Link to="/" className="btn btn-danger ml-5">
+          Cancel
+        </Link>
       </form>
     );
   }
@@ -66,4 +70,5 @@ function validate(values) {
 export default reduxForm({
   validate,
   form: "PostsNewForm",
-})(PostsNew);
+})(
+  connect(null, { createPost: postActions.createPost })(PostsNew));

@@ -11,4 +11,13 @@ function fetchPosts() {
   };
 }
 
-export default { fetchPosts };
+function createPost(value) {
+  const request = axios.post(`${config.REDUXBLOG_API_BASE_URL}/posts?key=${config.REDUXBLOG_API_KEY}`, value);
+
+  return {
+    type: POST_TYPES.CREATE_POST,
+    payload: request
+  }
+}
+
+export default { fetchPosts, createPost };
