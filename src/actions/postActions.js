@@ -11,13 +11,18 @@ function fetchPosts() {
   };
 }
 
-function createPost(value) {
-  const request = axios.post(`${config.REDUXBLOG_API_BASE_URL}/posts?key=${config.REDUXBLOG_API_KEY}`, value);
+function createPost(values, callback) {
+  const request = axios
+    .post(
+      `${config.REDUXBLOG_API_BASE_URL}/posts?key=${config.REDUXBLOG_API_KEY}`,
+      values
+    )
+    .then(() => callback());
 
   return {
     type: POST_TYPES.CREATE_POST,
-    payload: request
-  }
+    payload: request,
+  };
 }
 
 export default { fetchPosts, createPost };
