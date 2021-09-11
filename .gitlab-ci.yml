@@ -9,6 +9,7 @@ install-dependencies:
   stage: install
   script:
     - apk update && apk add python make g++
+    - apk add make
     - apk add --update nodejs npm
     - npm install
   artifacts:
