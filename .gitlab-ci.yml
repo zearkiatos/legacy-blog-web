@@ -65,7 +65,7 @@ build-app:
 pages:
   stage: deploy
   dependencies:
-    - build
+    - build-app
   script:
     - echo "Deploy a review app 🚀"
     - mv dist/* public
