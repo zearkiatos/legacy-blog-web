@@ -57,7 +57,7 @@ build-app:
     - echo "NODE_ENV=${NODE_ENV}" > .env
     - echo "REDUXBLOG_API_BASE_URL=${REDUXBLOG_API_BASE_URL}" >> .env
     - echo "REDUXBLOG_API_KEY=${REDUXBLOG_API_KEY}" >> .env
-    - make build
+    - npm run build && cp index.html dist/ && cp -R style dist/
   artifacts:
     expire_in: 1hr
     paths:

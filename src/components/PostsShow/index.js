@@ -1,8 +1,9 @@
 import React, { Component } from "react";
-import { connect } from 'react-redux';
+import { connect } from "react-redux";
 import { postActions } from "../../actions";
 class PostsShow extends Component {
   componentDidMount() {
+    console.log(this.props.match.params);
     const { id } = this.props.match.params;
     this.props.fetchPost(id);
   }
@@ -12,7 +13,18 @@ class PostsShow extends Component {
   }
 
   render() {
-    return <div>Posts Show</div>;
+    const { post } = this.props;
+    if (post) {
+      return (
+        <div>
+          <h3>{post.title}</h3>
+          <h6>Categories: {post.categories}</h6>
+          <p>{post.content}</p>
+        </div>
+      );
+    }
+
+    return <div>Loading...</div>;
   }
 }
 
