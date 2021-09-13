@@ -29,7 +29,8 @@ function fetchPost(id) {
   const request = axios.get(`${config.REDUXBLOG_API_BASE_URL}/posts/${id}?key=${config.REDUXBLOG_API_KEY}`);
 
   return {
-    type: POST_TYPES.FETCH_POST
+    type: POST_TYPES.FETCH_POST,
+    payload: request
   };
 
 }
