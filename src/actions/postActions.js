@@ -35,4 +35,19 @@ function fetchPost(id) {
 
 }
 
-export default { fetchPosts, createPost, fetchPost };
+function deletePost(id, callback) {
+  axios.delete(`${config.REDUXBLOG_API_BASE_URL}/posts/${id}?key=${config.REDUXBLOG_API_KEY}`)
+  .then(() => callback());
+
+  return {
+    type: POST_TYPES.DELETE_POST,
+    payload: id
+  }
+}
+
+export default {
+  fetchPosts,
+  createPost,
+  fetchPost,
+  deletePost 
+};

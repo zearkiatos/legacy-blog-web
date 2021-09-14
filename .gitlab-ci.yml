@@ -69,7 +69,7 @@ pages:
     - build-app
   script:
     - echo "Deploy a review app 🚀"
-    - mv dist/* public
+    - mv dist public
   artifacts:
     paths:
       - public
