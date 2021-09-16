@@ -1,0 +1,49 @@
+{
+  "name": "legacy-blog-web",
+  "version": "1.0.0",
+  "description": "Legacy web react ⚛️ blog web application for public post article from different users and topics",
+  "main": "index.js",
+  "scripts": {
+    "start": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js",
+    "build": "webpack -p --define process.env.NODE_ENV='\"production\"' --config webpack.prod.config.js --progress --colors",
+    "docker:dev": "./node_modules/webpack-dev-server/bin/webpack-dev-server.js --host 0.0.0.0 --inline --content-base ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/zearkiatos/legacy-blog-web.git"
+  },
+  "keywords": [
+    "Blog",
+    "Posts",
+    "ReactJS",
+    "Legacy"
+  ],
+  "author": "Pedro Capriles",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/zearkiatos/legacy-blog-web/issues"
+  },
+  "homepage": "https://github.com/zearkiatos/legacy-blog-web#readme",
+  "dependencies": {
+    "axios": "^0.21.1",
+    "babel-preset-stage-1": "^6.1.18",
+    "lodash": "^4.17.21",
+    "react": "^16.3.2",
+    "react-dom": "^16.3.2",
+    "react-redux": "^5.0.7",
+    "react-router-dom": "^4.3.1",
+    "redux": "^4.0.0",
+    "redux-form": "^6.6.3",
+    "redux-promise": "^0.6.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.2.1",
+    "babel-loader": "^6.2.0",
+    "babel-preset-es2015": "^6.1.18",
+    "babel-preset-react": "^6.1.18",
+    "dotenv-webpack": "^7.0.3",
+    "webpack": "^1.12.9",
+    "webpack-dev-server": "^1.14.0"
+  }
+}
